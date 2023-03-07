@@ -14,30 +14,9 @@ function Edit() {
   const [date, setDate] = useState(currrentNote.dateTime);
   const [content, setContent] = useState(currrentNote.content);
 
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  };
-
-  const formatDate = (when) => {
-    const formatted = new Date(when).toLocaleString("en-US", options);
-    if (formatted === "Invalid Date") {
-      return "";
-    }
-    return formatted;
-  };
-
-  //   useEffect(() => {
-  //     console.log(value);
-  //   }, [value]);
-
   function save() {
-    //console.log(formatDate(date));
     currrentNote.title = title;
-    currrentNote.dateTime = formatDate(date);
+    currrentNote.dateTime = date;
     currrentNote.content = content;
     localStorage.setItem("noteMenu.notes", JSON.stringify(notes));
     navigate(`/notes/${id}`, { replace: true });
@@ -72,7 +51,7 @@ function Edit() {
           <input
             className="date-input"
             type="datetime-local"
-            value={currrentNote.dateTime}
+            value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </div>

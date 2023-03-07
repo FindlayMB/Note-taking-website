@@ -11,6 +11,21 @@ function View() {
   function editNote() {
     navigate(`/notes/${id}/edit`, { replace: true });
   }
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
+
+  const formatDate = (when) => {
+    const formatted = new Date(when).toLocaleString("en-US", options);
+    if (formatted === "Invalid Date") {
+      return "";
+    }
+    return formatted;
+  };
 
   function deleteNote(noteId) {
     const index = notes.indexOf(currrentNote);
@@ -33,7 +48,7 @@ function View() {
       <div id="view-header">
         <div id="view-info">
           <h1>{currrentNote.title}</h1>
-          <h5>{currrentNote.dateTime}</h5>
+          <h5>{formatDate(currrentNote.dateTime)}</h5>
         </div>
         <div className="button-group">
           <button id="edit-button" onClick={editNote}>
