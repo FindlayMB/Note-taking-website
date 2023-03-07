@@ -1,0 +1,287 @@
+body,h1,h2,h3,h4,h5,h6,li,p {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html,body{
+  font-family: sans-serif;
+  height: 100%;
+  /* background-color: white; */
+  
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  flex-direction: row;
+  font-size: large;
+  border-top: solid 5px rgb(66, 0, 121);
+  border-bottom: solid 2px rgb(204, 204, 204);
+  text-decoration: none;
+}
+nav #title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 33%;
+  width: 33%;
+}
+#title h2{
+  font-size: 34px;
+}
+#title h6{
+  color: gray;
+}
+nav #invis-left{
+  display: flex;
+  flex: 1 0 33%;
+  width: 33%;
+  justify-content: left;
+  height: 100%;
+}
+nav #invis-right{
+  display: flex;
+  flex: 1 0 33%;
+  width: 33%;
+  justify-content: right;
+  height: 100%;
+}
+nav button{
+  font-size: 34px;
+  border: 0px;
+  height: 100%;
+  width: 100px;
+  background-color: var(--background-colour); 
+  color: var(--text-colour);
+  transition: 0.7s;
+}
+nav button:hover{
+  background-color: rgb(66, 0, 121);
+  color: white;
+}
+
+
+#root{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#content {
+  display: flex;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+#side-container{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  border-right: solid 2px rgb(204, 204, 204);
+  transition: 1s;
+  overflow : hidden;
+  white-space: nowrap;
+}
+#side-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  border-bottom: solid 2px rgb(204, 204, 204);
+  margin-bottom: 5px;
+}
+#side-header button{
+  font-size: 48px;
+  border: none;
+  color: var(--text-colour);
+  background-color: var(--background-colour);
+  height: 100%;
+  width: 60px;
+  transition: 0.7s;
+}
+#side-header button:hover{
+  background-color: rgb(66, 0, 121);
+  color: white;
+}
+#side-title{
+  font-size: 32px;
+  padding-left: 15px;
+}
+#side-items{
+  display: flex;
+  flex-direction: column;
+}
+#no-notes-yet{
+  text-align: center;
+  color: gray;
+}
+
+button.note-button{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: calc(25vw - 5px);
+  height: 100px;
+  overflow: hidden;
+  text-align: left;
+  white-space: normal;
+  margin-bottom: 2.5px;
+  color: var(--text-colour);
+  background-color: var(--background-colour);
+  border-radius: 7.5px;
+  transition: 0.7s;
+}
+button.note-button:hover{
+  background-color: rgb(66, 0, 121);
+  color: white;
+}
+.note-button h2{
+
+}
+.note-button h5{
+  color: rgb(161, 161, 161);
+  padding-bottom: 7px;
+}
+.note-button h4{
+  
+}
+
+
+
+#note-container{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+  transition: 1s;
+}
+#note-container #none-selected{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: gray;
+  justify-content: center;
+  align-items: center;
+}
+
+/* View CSS */
+#view-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 2px rgb(204, 204, 204);
+  width: calc(100% - 40px);
+  height: 10%;
+  padding-inline: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#view-info{
+  display: flex;
+  flex-direction: column;
+}
+#view-info h1{
+
+}
+#view-info h5{
+  color: gray;
+}
+
+
+/* Edit CSS */
+#edit-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 40px);
+  height: 80px;
+  padding-inline: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#edit-info{
+  display: flex;
+  flex-direction: column;
+}
+.edit-note-title{
+  border: none;
+  font-size: 2em;
+}
+.edit-note-title:focus-visible{
+  outline: none;
+  font-size: x-large;
+}
+.date-input{
+  border: none;
+  font-size: large;
+  width: fit-content;
+}
+
+#edit-box{
+  height: 80%;
+}
+
+
+
+
+
+
+
+
+
+/* Edit, Delete, Save button CSS */
+.button-group{
+  display: flex;
+  height: 100%;
+}
+.button-group button{
+  margin-top: 5px;
+  width: 70px;
+  height: 70px;
+  font-size: large;
+  font-weight: bold;
+  color: var(--text-colour);
+  background-color: var(--background-colour);
+  border-radius: 15px;
+  transition: 0.7s;
+}
+.button-group button:hover{
+  background-color: rgb(66, 0, 121);
+  color: white;
+}
+#delete-button{
+  /* margin to split edit/save and delete buttons */
+  margin-left: 5px;
+}
+
+/* Collapse side-container animation */
+.displaying #note-container{
+  width: 100%;
+  transition: width 1s;
+}
+.displaying #side-container{
+  white-space: nowrap;
+  width: 0%;
+  transition: width 1s;
+}
+
+
+/* Colour mode CSS */
+:root {
+  --text-colour: #000000;
+  --background-colour: #ffffff;
+  background-color: white;
+}
+:root .dark{
+  --text-colour: #ffffff;
+  --background-colour: #121213;
+  background-color: var(--background-colour);
+  color: white;
+}
