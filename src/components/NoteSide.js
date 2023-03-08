@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function NoteSide({ note }) {
+function NoteSide({ note, current }) {
   const navigate = useNavigate();
   function changeVisibleNote() {
     navigate(`notes/${note.id}`, { replace: true });
@@ -17,7 +17,7 @@ function NoteSide({ note }) {
 
   return (
     <>
-      <button className="note-button" onClick={changeVisibleNote}>
+      <button className={"note-button " + current} onClick={changeVisibleNote}>
         <h2>{note.title}</h2>
         <h5>{note.dateTime}</h5>
         <h4 dangerouslySetInnerHTML={{ __html: getPreview() }}></h4>

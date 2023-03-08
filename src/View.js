@@ -55,7 +55,7 @@ function View() {
             Edit
           </button>
           <button id="delete-button" onClick={handleDelete}>
-            delete
+            Delete
           </button>
         </div>
       </div>

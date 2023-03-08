@@ -21,7 +21,13 @@ function Layout() {
 
   const navigate = useNavigate();
   function addNote() {
-    var newNote = { id: uuid(), title: "Untitled", dateTime: "", content: "" };
+    var newNote = {
+      id: uuid(),
+      title: "Untitled",
+      dateTime: "",
+      content: "",
+      selected: true,
+    };
     setNotes((prevNotes) => {
       return [newNote, ...prevNotes];
     });

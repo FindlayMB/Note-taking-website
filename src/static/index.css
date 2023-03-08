@@ -130,8 +130,11 @@ button.note-button{
   width: calc(25vw - 5px);
   height: 100px;
   overflow: hidden;
+  word-break:break-all;
+  overflow-wrap:normal;
   text-align: left;
   white-space: normal;
+  
   margin-bottom: 2.5px;
   color: var(--text-colour);
   background-color: var(--background-colour);
@@ -142,18 +145,14 @@ button.note-button:hover{
   background-color: rgb(66, 0, 121);
   color: white;
 }
-.note-button h2{
-
-}
 .note-button h5{
   color: rgb(161, 161, 161);
   padding-bottom: 7px;
 }
-.note-button h4{
-  
+.note-button.true{
+  background-color: rgb(66, 0, 121);
+  color: white;
 }
-
-
 
 #note-container{
   display: flex;
@@ -161,6 +160,7 @@ button.note-button:hover{
   width: 75%;
   height: 100%;
   transition: 1s;
+  word-wrap: break-word;
 }
 #note-container #none-selected{
   display: flex;
@@ -225,9 +225,10 @@ button.note-button:hover{
 }
 
 #edit-box{
+  border: none !important;
   height: 80%;
 }
-
+.ql-container.ql-snow{ border: none !important;}
 
 
 
@@ -258,7 +259,8 @@ button.note-button:hover{
 }
 #delete-button{
   /* margin to split edit/save and delete buttons */
-  margin-left: 5px;
+  width: 71px;
+  margin-left: 4px;
 }
 
 /* Collapse side-container animation */

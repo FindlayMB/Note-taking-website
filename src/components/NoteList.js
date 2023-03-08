@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import NoteSide from "./NoteSide";
-
+import { useParams } from "react-router";
 function NoteList({ notes }) {
+  const { id } = useParams();
   console.log("check");
   console.log(notes);
   if (!notes[0]) {
@@ -13,7 +14,11 @@ function NoteList({ notes }) {
     );
   }
   return notes.map((note) => {
-    return <NoteSide key={note.id} note={note} />;
+    if (note.id === id) {
+      return <NoteSide key={note.id} note={note} current={true} />;
+    } else {
+      return <NoteSide key={note.id} note={note} current={false} />;
+    }
   });
 }
 
