@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
-import NoteSide from "./NoteSide";
+import Note from "./Note";
 import { useParams } from "react-router";
-function NoteList({ notes }) {
+function NoteList({ notes, formatDate }) {
   const { id } = useParams();
-  console.log("check");
-  console.log(notes);
   if (!notes[0]) {
-    console.log("no notes");
     return (
       <>
         <h2 id="no-notes-yet">No notes yet</h2>
@@ -14,11 +11,14 @@ function NoteList({ notes }) {
     );
   }
   return notes.map((note) => {
-    if (note.id === id) {
-      return <NoteSide key={note.id} note={note} current={true} />;
-    } else {
-      return <NoteSide key={note.id} note={note} current={false} />;
-    }
+    return (
+      <Note
+        key={note.ID}
+        note={note}
+        current={note.ID === id ? " true" : ""}
+        formatDate={formatDate}
+      />
+    );
   });
 }
 

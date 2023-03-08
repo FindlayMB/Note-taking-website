@@ -8,12 +8,28 @@ function Edit() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [notes, setNotes] = useOutletContext();
-  const currrentNote = notes.find((element) => element.id === id);
+  const currrentNote = notes.find((element) => element.ID === id);
 
   const [title, setTitle] = useState(currrentNote.title);
-  const [date, setDate] = useState(currrentNote.dateTime);
+  const [date, setDate] = useState(currrentNote.dateTime || getCurrentDate());
   const [content, setContent] = useState(currrentNote.content);
 
+  function getCurrentDate() {
+    var date = new Date();
+    date = date.toISOString();
+    date = date.substring(0, date.length - 1);
+    let replace = date.split("T");
+    let corrected = parseInt(date.substring(11, 13)) - 7;
+    if (corrected < 0) {
+      corrected += 24;
+    }
+    return (
+      replace[0] +
+      "T" +
+      corrected +
+      replace[1].substring(2, replace[1].length - 4)
+    );
+  }
   function save() {
     currrentNote.title = title;
     currrentNote.dateTime = date;
@@ -34,7 +50,7 @@ function Edit() {
     if (!notes[0]) {
       navigate("/notes", { replace: true });
     } else {
-      navigate(`/notes/${notes[0].id}`, { replace: true });
+      navigate(`/notes/${notes[0].ID}`, { replace: true });
     }
   }
 
@@ -67,6 +83,7 @@ function Edit() {
       <ReactQuill
         id="edit-box"
         theme="snow"
+        placeholder="Your Note Here"
         value={content}
         onChange={setContent}
       />

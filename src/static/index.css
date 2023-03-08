@@ -193,6 +193,11 @@ button.note-button:hover{
 #view-info h5{
   color: gray;
 }
+#view-content{
+  width: calc(100% - 40px);
+  padding-inline: 20px;
+  padding-top: 10px;
+}
 
 
 /* Edit CSS */
@@ -224,9 +229,10 @@ button.note-button:hover{
   width: fit-content;
 }
 
-#edit-box{
+.ql-editor{
   border: none !important;
   height: 80%;
+  font-size: medium;
 }
 .ql-container.ql-snow{ border: none !important;}
 

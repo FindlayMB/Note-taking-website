@@ -4,28 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 function View() {
   const { id } = useParams();
-  const [notes, setNotes] = useOutletContext();
+  const [notes, setNotes, formatDate] = useOutletContext();
   const navigate = useNavigate();
-  const currrentNote = notes.find((element) => element.id === id);
+  const currrentNote = notes.find((element) => element.ID === id);
 
   function editNote() {
     navigate(`/notes/${id}/edit`, { replace: true });
   }
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  };
-
-  const formatDate = (when) => {
-    const formatted = new Date(when).toLocaleString("en-US", options);
-    if (formatted === "Invalid Date") {
-      return "";
-    }
-    return formatted;
-  };
 
   function deleteNote(noteId) {
     const index = notes.indexOf(currrentNote);
@@ -39,7 +24,7 @@ function View() {
     if (!notes[0]) {
       navigate("/notes", { replace: true });
     } else {
-      navigate(`/notes/${notes[0].id}`, { replace: true });
+      navigate(`/notes/${notes[0].ID}`, { replace: true });
     }
   }
 

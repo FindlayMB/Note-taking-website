@@ -20,9 +20,25 @@ function Layout() {
   }, [notes]);
 
   const navigate = useNavigate();
+
+  const formatDate = (when) => {
+    const formatted = new Date(when).toLocaleString("en-US", {
+      //options
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    });
+    if (formatted === "Invalid Date") {
+      return "";
+    }
+    return formatted;
+  };
+
   function addNote() {
     var newNote = {
-      id: uuid(),
+      ID: uuid(),
       title: "Untitled",
       dateTime: "",
       content: "",
@@ -31,7 +47,7 @@ function Layout() {
     setNotes((prevNotes) => {
       return [newNote, ...prevNotes];
     });
-    navigate(`notes/${newNote.id}/edit`, { replace: true });
+    navigate(`notes/${newNote.ID}/edit`, { replace: true });
   }
 
   return (
@@ -55,12 +71,12 @@ function Layout() {
           </div>
 
           <div id="side-items">
-            <NoteList notes={notes} />
+            <NoteList notes={notes} formatDate={formatDate} />
           </div>
         </div>
 
         <div id="note-container">
-          <Outlet context={[notes, setNotes]} />
+          <Outlet context={[notes, setNotes, formatDate]} />
         </div>
       </div>
     </>
