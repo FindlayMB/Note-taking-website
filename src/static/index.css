@@ -187,9 +187,9 @@ button.note-button:hover{
   display: flex;
   flex-direction: column;
 }
-#view-info h1{
+/* #view-info h1{
 
-}
+} */
 #view-info h5{
   color: gray;
 }
