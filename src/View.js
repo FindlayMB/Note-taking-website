@@ -12,7 +12,7 @@ function View() {
     navigate(`/notes/${id}/edit`, { replace: true });
   }
 
-  function deleteNote(noteId) {
+  function deleteNote() {
     const index = notes.indexOf(currrentNote);
     if (index > -1) notes.splice(index, 1);
     localStorage.setItem("noteMenu.notes", JSON.stringify(notes));

@@ -117,6 +117,7 @@ nav button:hover{
 #side-items{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 #no-notes-yet{
   text-align: center;
@@ -127,14 +128,13 @@ button.note-button{
   display: flex;
   flex-direction: column;
   align-self: center;
-  width: calc(25vw - 5px);
+  width: calc(100% - 5px);
   height: 100px;
   overflow: hidden;
-  word-break:break-all;
-  overflow-wrap:normal;
+  /* word-break:break-all; */
   text-align: left;
-  white-space: normal;
-  
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin-bottom: 2.5px;
   color: var(--text-colour);
   background-color: var(--background-colour);
@@ -153,6 +153,30 @@ button.note-button:hover{
   background-color: rgb(66, 0, 121);
   color: white;
 }
+.note-button #note-preview{
+  /* display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 0;
+  -webkit-box-orient: vertical; */
+  height: 45px;
+  width: 80%;
+  
+  /* text-overflow: ellipsis; */
+}
+
+#note-preview p{
+  height: 15px;
+  width: 100%;
+  /* white-space: nowrap !important;
+  overflow-x: hidden !important;*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+}
+
+
 
 #note-container{
   display: flex;
@@ -178,7 +202,7 @@ button.note-button:hover{
   justify-content: space-between;
   border-bottom: solid 2px rgb(204, 204, 204);
   width: calc(100% - 40px);
-  height: 10%;
+  height: 80px;
   padding-inline: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -210,35 +234,52 @@ button.note-button:hover{
   padding-inline: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+  border-bottom: solid 2px rgb(204, 204, 204);
 }
 #edit-info{
   display: flex;
   flex-direction: column;
+  width: 60%;
 }
 .edit-note-title{
   border: none;
+  font-weight: bold;
   font-size: 2em;
 }
 .edit-note-title:focus-visible{
   outline: none;
-  font-size: x-large;
+  font-size: 2em;
 }
 .date-input{
   border: none;
+  outline: none;
   font-size: large;
   width: fit-content;
 }
+.date-input:focus-visible{
+  border: none;
+}
 
+/* Quill Edit box CSS */
 .ql-editor{
   border: none !important;
-  height: 80%;
+  width: calc(100% - 20px);
+  padding-top: 20px;
+  padding-inline: 20px;
   font-size: medium;
 }
-.ql-container.ql-snow{ border: none !important;}
-
-
-
-
+.ql-container.ql-snow{ 
+  border: none !important;
+}
+.ql-toolbar.ql-snow{
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+#edit-box{
+  height: calc(fit-content + 200px);
+  width: 100%;
+}
 
 
 
@@ -288,6 +329,7 @@ button.note-button:hover{
   background-color: white;
 }
 :root .dark{
+  /* Dark mode style */
   --text-colour: #ffffff;
   --background-colour: #121213;
   background-color: var(--background-colour);
